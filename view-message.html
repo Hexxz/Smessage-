@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Secret Message</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin-top: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>View Secret Message</h1>
+        <label for="password">Masukkan Password untuk Melihat Pesan:</label><br>
+        <input type="password" id="password" placeholder="Password"><br><br>
+        <button onclick="verifyPassword()">Tampilkan Pesan</button>
+
+        <div id="message"></div>
+    </div>
+
+    <script>
+        const correctPassword = "12345"; // Ganti dengan password yang kamu inginkan
+
+        // Fungsi untuk memverifikasi password dan menampilkan pesan
+        function verifyPassword() {
+            const inputPassword = document.getElementById('password').value;
+            if (inputPassword === correctPassword) {
+                showSecretMessage();
+            } else {
+                alert('Password salah! Coba lagi.');
+            }
+        }
+
+        // Fungsi untuk menampilkan pesan rahasia
+        function showSecretMessage() {
+            const storedMessage = localStorage.getItem('secretMessage');
+            if (storedMessage) {
+                document.getElementById('message').textContent = 'Pesan Rahasia: ' + storedMessage;
+            } else {
+                document.getElementById('message').textContent = 'Pesan belum disimpan!';
+            }
+        }
+    </script>
+
+</body>
+</html>

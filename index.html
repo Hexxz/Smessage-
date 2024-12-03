@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save Secret Message</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            resize: vertical;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin-top: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Save Secret Message</h1>
+        <label for="secretText">Masukkan Pesan Rahasia:</label><br>
+        <textarea id="secretText" rows="4" placeholder="Tulis pesan rahasiamu di sini..."></textarea><br>
+        <button onclick="saveSecretMessage()">Simpan Pesan</button>
+    </div>
+
+    <script>
+        // Fungsi untuk menyimpan pesan rahasia di LocalStorage
+        function saveSecretMessage() {
+            const secretText = document.getElementById('secretText').value;
+            if (secretText) {
+                localStorage.setItem('secretMessage', secretText);
+                alert('Pesan berhasil disimpan!');
+            } else {
+                alert('Harap masukkan pesan terlebih dahulu.');
+            }
+        }
+    </script>
+
+</body>
+</html>
